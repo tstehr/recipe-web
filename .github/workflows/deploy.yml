@@ -37,9 +37,10 @@ jobs:
         git config --global user.name $user_name
         git config --global user.email $user_email
         git remote set-url origin https://git:${github_token}@github.com/${repository}
-        yarn run deploy
+        yarn run deploy --cname $cname
       env:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: ${{ github.repository }}
+        cname: ${{ vars.CNAME }}
